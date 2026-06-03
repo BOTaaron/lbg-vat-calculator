@@ -24,7 +24,17 @@ pipeline {
               
            }
         }
-        stage('Push Image') {
+	stage('Push Image') {
+            steps {
+                script {
+                    docker.withRegistry("", registryCredentials) {
+                        dockerImage.push("${env.BUILD_NUMBER}")
+                        dockerImage.push("latest")
+                    }
+                }
+            }
+        }
+        stage('Clean Uo') {
             steps {
               sh "docker image prune --all --force --filter 'until=48h'"
               
