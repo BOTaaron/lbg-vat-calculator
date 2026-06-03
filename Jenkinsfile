@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         dockerCreds = credentials('dockerhub_login')
-        registry = "{dockerCreds_USR}/vatcal"
+        registry = "botaaron/vatcal"
         registryCredentials = "dockerhub_login"
         dockerImage = ""
     }
@@ -34,7 +34,7 @@ pipeline {
                 }
             }
         }
-        stage('Clean Uo') {
+        stage('Clean Up') {
             steps {
               sh "docker image prune --all --force --filter 'until=48h'"
               
