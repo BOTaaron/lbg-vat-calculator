@@ -26,7 +26,7 @@ pipeline {
         }
         stage('Push Image') {
             steps {
-              sh 'docker image prune --all --force --filter 'until=48h'"
+              sh "docker image prune --all --force --filter 'until=48h'"
               
             }
         }
