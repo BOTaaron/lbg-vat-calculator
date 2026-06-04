@@ -52,7 +52,7 @@ pipeline {
                         sh '''
                             export GOOGLE_APPLICATION_CREDENTIALS=$GCP_CREDENTIALS
                             terraform init
-			    terrascan scan -i terraform -t gcp -p --non-resursive
+			    terrascan scan -i terraform -t gcp -p -d . --non-recursive
                             terraform apply -auto-approve
                         '''
                     }
